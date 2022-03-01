@@ -4,22 +4,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+  {% load compress %}
+  {% compress css inline %}
+  <link rel="stylesheet" href="/static/css/mini.css" type="text/css" charset="utf-8">
+  <link rel="stylesheet" href="/static/css/main.css" type="text/css" charset="utf-8">
+  {% endcompress %}
+	<title>{% firstof title "Haber Sitesi" %}</title>
+
 {% if ogimage %}
 	<meta name="og:image" content={{ ogimage }} />
 {% endif %}
 
-{% load compress %}
-{% compress css inline %}
-<link rel="stylesheet" href="/static/css/mini.css" type="text/css" charset="utf-8">
-<link rel="stylesheet" href="/static/css/main.css" type="text/css" charset="utf-8">
-{% endcompress %}
 </head>
 <body>
-<div id="root">
-  <header class="row">
-    <a href="/" class="logo">Logo</a>
-    <a href="/" class="button">Home</a>
-    <button>Download</button>
-  </header>
-  <div class="bodyarea">
+<header class="navbar">
+  <section class="navbar-section">
+    <a href="/" class="navbar-brand mr-2">Home</a>
+  </section>
+</header>
+<main class="container">

@@ -1,5 +1,5 @@
 {% load thumbnail %}
-{% include "news/header.html" with base=django.urls.base ogimage=news.cover|thumbnail_url:'twitter_fb'  %}
+{% include "news/header.html" with base=django.urls.base ogimage=news.cover|thumbnail_url:'twitter_fb' title=news.title %}
 <div class="container">
     <div class="row">
 		<div class="col-sm-12 col-md-8 col-lg-9">
@@ -12,11 +12,6 @@
 				<div class="section dark">
 					{{ news.author.first_name }} {{ news.author.last_name }} | {{ news.created_on|date }} | <a href="https://facebook.com/sharer/sharer.php?u={% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{% url 'news:newsdetail' news.category.cat_slug news.slug %}" target="_blank" aria-label="Facebook'da paylaş"><span class="icon-facebook"></span></a> <a href="https://twitter.com/intent/tweet/?text={{ news.title|urlencode}}&amp;url={% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{% url 'news:newsdetail' news.category.cat_slug news.slug %}" target="_blank" aria-label="Twitter'da paylaş"><span class="icon-twitter"></span></a>
 				</div>
-			</div>
-		</div>
-		<div class="col-sm-12 col-md-4 col-lg-3">
-			<div class="card">
-
 			</div>
 		</div>
 	</div>
