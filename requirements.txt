@@ -1,9 +1,9 @@
 Django==3.2.2
-django-baton
+django-baton==2.2.3
 django-ckeditor==6.2.0
 python-slugify==6.1.0
 easy-thumbnails==2.8.1
 django-colorfield
 django-compressor==3.1
 whitenoise==6.0.0
-wheels
+wheel==0.37.1
