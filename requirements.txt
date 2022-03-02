@@ -7,3 +7,6 @@ django-colorfield
 django-compressor==3.1
 whitenoise==6.0.0
 wheel==0.37.1
+djangorestframework==3.13.1
+django-markdown
+django-filter==21.1

@@ -1,21 +1,40 @@
 {% load thumbnail %}
 {% include "news/header.html" with base=django.urls.base ogimage=news.cover|thumbnail_url:'twitter_fb' title=news.title %}
-<div class="container">
-    <div class="row">
-		<div class="col-sm-12 col-md-8 col-lg-9">
-			<div class="card">
-				<div class="section">
-					<h1>{{ news.title }}</h1>
+<div class="columns">
+  <div class="column col-mx-auto col-8">
+		<div class="card">
+			<div class="card-image">
+				<a class="news" href="{% url 'news:newsdetail' news.category.cat_slug news.slug %}"
+						>
+				<img
+					class="section media img-responsive"
+					src="{{ news.cover|thumbnail_url:'twitter_fb' }}"
+					alt="{{ news.title }}"
+				/>
+				</a>
+			</div>
+			<div class="card-header">
+				<div class="card-title h5">
+					<a class="news" href="{% url 'news:newsdetail' news.category.cat_slug news.slug %}"
+						>{{ news.title }}</a
+					>
 				</div>
-				<img class="section media" src="{{ news.cover|thumbnail_url:'twitter_fb' }}" alt="{{ news.title }}" />
-				{{ news.content | safe }}
-				<div class="section dark">
-					{{ news.author.first_name }} {{ news.author.last_name }} | {{ news.created_on|date }} | <a href="https://facebook.com/sharer/sharer.php?u={% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{% url 'news:newsdetail' news.category.cat_slug news.slug %}" target="_blank" aria-label="Facebook'da paylaş"><span class="icon-facebook"></span></a> <a href="https://twitter.com/intent/tweet/?text={{ news.title|urlencode}}&amp;url={% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{% url 'news:newsdetail' news.category.cat_slug news.slug %}" target="_blank" aria-label="Twitter'da paylaş"><span class="icon-twitter"></span></a>
+				<div class="card-subtitle text-gray">
+					<a href="{% url 'news:catindex' news.category.cat_slug %}"
+						><strong>{{news.category.cat_name}}</strong></a
+					>
 				</div>
 			</div>
+      <div class="card-body">
+        {{ news.content | safe }}
+      </div>
+      <div class="card-footer">
+					{{ news.author.first_name }} {{ news.author.last_name }} | {{ news.created_on|date }} | <a href="https://facebook.com/sharer/sharer.php?u={% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{% url 'news:newsdetail' news.category.cat_slug news.slug %}" target="_blank" aria-label="Facebook'da paylaş"><span class="icon-facebook"></span></a> <a href="https://twitter.com/intent/tweet/?text={{ news.title|urlencode}}&amp;url={% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{% url 'news:newsdetail' news.category.cat_slug news.slug %}" target="_blank" aria-label="Twitter'da paylaş"><span class="icon-twitter"></span></a>
+      </div>
 		</div>
-	</div>
+  </div>
 </div>
+
 <script type="application/ld+json">
 {
  "@context": "http://schema.org",
