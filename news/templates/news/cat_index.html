@@ -6,31 +6,37 @@
         <h2>{{cat.cat_name}} News</h2>
     </div>
 </div>
-<div class="columns"></div>
+<div class="columns">
+	{% for news in news_list %}
+	<div class="column col-2">
+		<div class="card">
+			<div class="card-image">
+				<a class="news" href="{% url 'news:newsdetail' news.category.cat_slug news.slug %}"
+						>
+				<img
+					class="section media img-responsive"
+					src="{{ news.cover|thumbnail_url:'idnexcards' }}"
+					alt="{{ news.title }}"
+				/>
+				</a>
+			</div>
+			<div class="card-header">
+				<div class="card-title h5">
+					<a class="news" href="{% url 'news:newsdetail' news.category.cat_slug news.slug %}"
+						>{{ news.title|truncatechars:50 }}</a
+					>
+				</div>
+				<div class="card-subtitle text-gray">
+					<a href="{% url 'news:catindex' news.category.cat_slug %}"
+						><strong>{{news.category.cat_name}}</strong></a
+					>
+				</div>
+			</div>
+		</div>
+	</div>
 
-{% for news in news_list %}
-<div class="column col-2">
-    <div class="card">
-        <div class="card-image">
-            <a class="news" href="{% url 'news:newsdetail' news.category.cat_slug news.slug %}"></a>
-                <img class="section media img-responsive" src="{{ news.cover|thumbnail_url:'idnexcards' }}"
-                    alt="{{ news.title }}" />
-            </a>
-        </div>
-        <div class="card-header">
-            <div class="card-title h5">
-                <a class="news" href="{% url 'news:newsdetail' news.category.cat_slug news.slug %}">{{
-                    news.title|truncatechars:50 }}</a>
-            </div>
-            <div class="card-subtitle text-gray">
-                <a
-                    href="{% url 'news:catindex' news.category.cat_slug %}"><strong>{{news.category.cat_name}}</strong></a>
-            </div>
-        </div>
-    </div>
-</div>
-{% empty %}
-<li>No news yet.</li>
-{% endfor %}
+	{% empty %}
+	<div>No news yet.</div>
+	{% endfor %}
 </div>
 {% include "news/footer.html" %}
