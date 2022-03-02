@@ -4,11 +4,14 @@
 	<div class="column col-2">
 		<div class="card">
 			<div class="card-image">
+				<a class="news" href="{% url 'news:newsdetail' news.category.cat_slug news.slug %}"
+						>
 				<img
 					class="section media img-responsive"
 					src="{{ news.cover|thumbnail_url:'idnexcards' }}"
 					alt="{{ news.title }}"
 				/>
+				</a>
 			</div>
 			<div class="card-header">
 				<div class="card-title h5">
