@@ -284,3 +284,20 @@ REST_FRAMEWORK = {
 ## REST FRAMEWORK ##
 ####################
 
+####################
+## BATON SETTINGS ##
+####################
+
+BATON = {
+    'SITE_HEADER' : 'Admin Panel v.1',
+    'SITE_TITLE' : 'Admin Panel v.1',
+    'SUPPORT_HREF' : 'https://serkanalgur.com.tr',
+    'COPYRIGHT' : 'Serkan Algur',
+    'POWERED_BY': '<a href="https://serkanalgur.com.tr">Serkan Algur</a>',
+    'MESSAGES_TOASTS': True,
+
+}
+
+####################
+## BATON SETTINGS ##
+####################
